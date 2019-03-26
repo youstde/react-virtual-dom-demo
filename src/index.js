@@ -1,12 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import { createElement, renderDom } from './element';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const virtualDom = createElement('ul', {class: 'list'}, [
+    createElement('li', {class: 'item'}, ['a']),
+    createElement('li', {class: 'item'}, ['b']),
+    createElement('li', {class: 'item'}, ['c'])
+]);
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+const el = renderDom(virtualDom);
+console.log(el)
